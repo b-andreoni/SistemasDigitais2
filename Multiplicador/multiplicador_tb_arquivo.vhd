@@ -2,10 +2,10 @@ library ieee;
 use ieee.numeric_bit.all;
 use std.textio.all;
 
-    entity multiplicador_tb_arquivo is
-    end multiplicador_tb_arquivo;
+entity multiplicador_tb_arquivo is
+end multiplicador_tb_arquivo;
 
-    architecture Multiplicador_Read of multiplicador_tb_arquivo is
+architecture Multiplicador_Read of multiplicador_tb_arquivo is
 
    -- Declara o componente do DUT
    component multiplicador 
@@ -24,40 +24,39 @@ use std.textio.all;
  signal va_in, vb_in: bit_vector(3 downto 0);
  signal result_out: bit_vector(7 downto 0);
 
-    gerador_estimulos: process is
-        
+begin
+
+    gerador_estimulos: process
         file tb_file : text open read_mode is "multiplicador_tb.dat";
         variable tb_line: line;
         variable space: character;
         variable VaRead, VbRead: bit_vector(3 downto 0);
         variable result_out_read: bit_vector(7 downto 0);
         variable carry_esperado: bit;
-        
     begin
-        rst_in <= '1'; start_in <= '0';
-        wait for 
+        rst_in <= '1';
+        start_in <= '0';
+        wait for 10 ns;
         rst_in <= '0';
 
-        while not endfile(tb_file) loop  -- Enquanto não chegar no final do arquivo ...
-        readline(tb_file, tb_line);  -- Lê a próxima linha
-        read(tb_line, VaRead);   -- Da linha que foi lida, lê o primeiro parâmetro (op1)
-        read(tb_line, space); -- Lê o espaço após o primeiro parâmetro (separador)
-        read(tb_line, VbRead);   -- Da linha que foi lida, lê o segundo parâmetro (op2)
-        read(tb_line, space); -- Lê o próximo espaço usado como separador
-        read(tb_line, result_out_read);  -- Da linha que foi lida, lê o terceiro parâmetro (soma_esperada)
+        while not endfile(tb_file) loop
+            readline(tb_file, tb_line);
+            read(tb_line, VaRead);
+            read(tb_line, space);
+            read(tb_line, VbRead);
+            read(tb_line, space);
+            read(tb_line, result_out_read);
         
-        Va_in <= VaRead;
-        Vb_in <= VbRead; 
-        wait for 10 ns;
+            va_in <= VaRead;
+            vb_in <= VbRead; 
+            wait for 10 ns;
 
-        assert result_out = result_out_read report "Multiplicação " & integer'image(to_integer(unsigned(op1))) & " + " & integer'image(to_integer(unsigned(op2))) severity error;
-       
-     end loop;
+            assert result_out /= result_out_read
+                report "Multiplicacaoo " & integer'image(to_integer(unsigned(VaRead))) & " * " & integer'image(to_integer(unsigned(VbRead))) severity error;
+        end loop;
 
-     -- Informa fim do teste
-     assert false report "Teste concluido." severity note;	  
-     wait;  -- pára a execução do simulador, caso contrário este process é reexecutado indefinidamente.
-  end process;   
+        assert false report "Teste concluido." severity note;	  
+        wait;  -- pára a execução do simulador
+    end process;
 
-
-    end Multiplicador_Read;
+end Multiplicador_Read;
