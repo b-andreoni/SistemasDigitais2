@@ -58,23 +58,23 @@ begin
 
   ---- Gera sinais de estimulo
   stimulus: process is
-  begin
+  
     type pattern_type is record
         -- Entradas
         op1: bit_vector(3 downto 0);
         op2: bit_vector(3 downto 0);
         -- Saídas
         mult_esperada: bit_vector(7 downto 0);
-  end record;
+  	end record;
 
-  type pattern_type is array (natural range<>) of pattern_type;
+  	type pattern_array is array (natural range<>) of pattern_type;
 
   constant patterns: pattern_array :=
   --  op1    op2     resultado          op1   op2   resultado
   (("0011", "0110", "00010010"),    --    3 x 6   =   18    
   ("1111","1011","10100101"),       --   15 x 11  =   165
   ("1111","0000","00000000"),       --   15 x 0   =   0
-  ("0001","1011","00001011"),       --    1 x 11  =   11
+  ("0001","1011","00001011")       --    1 x 11  =   11
   );
  
   begin
@@ -82,12 +82,13 @@ begin
 	  -- Para cada padrao de teste no vetor
       for i in patterns'range loop
          -- Injeta as entradas
-         a_in <= patterns(i).op1;
-		     b_in <= patterns(i).op2;
+         va_in <= patterns(i).op1;
+	 vb_in <= patterns(i).op2;
          -- Aguarda que o modulo produza a saida
          wait for 10 ns;
+         
          --  Verifica as saidas
-         assert m_out = patterns(i).mult_esperada report "Erro na multiplicação " & integer'image(to_integer(unsigned(patterns(i).op1))) & " * " & integer'image(to_integer(unsigned(patterns(i).op2))) severity error;
+         assert result_out = patterns(i).mult_esperada report "Erro na multiplicação " & integer'image(to_integer(unsigned(patterns(i).op1))) & " * " & integer'image(to_integer(unsigned(patterns(i).op2))) & " (Deu: " & integer'image(to_integer(unsigned(result_out))) & ") " & "Era pra ser: " & integer'image(to_integer(unsigned(patterns(i).mult_esperada)))  severity error;
       end loop;
 
 	  -- Informa fim do teste
