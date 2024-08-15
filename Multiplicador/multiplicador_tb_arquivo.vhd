@@ -13,26 +13,39 @@ architecture Multiplicador_Read of multiplicador_tb_arquivo is
        Clock:    in  bit;
        Reset:    in  bit;
        Start:    in  bit;
-       Va,Vb:    in  bit_vector(3 downto 0);
+       Va, Vb:   in  bit_vector(3 downto 0);
        Vresult:  out bit_vector(7 downto 0);
        Ready:    out bit
     );
- end component;
+   end component;
 
- signal clk_in: bit := '0';
- signal rst_in, start_in, ready_out: bit := '0';
- signal va_in, vb_in: bit_vector(3 downto 0);
- signal result_out: bit_vector(7 downto 0);
+   -- Sinais de teste
+   signal clk_in: bit := '0';
+   signal rst_in, start_in, ready_out: bit := '0';
+   signal va_in, vb_in: bit_vector(3 downto 0);
+   signal result_out: bit_vector(7 downto 0);
 
 begin
 
+    -- Instância do DUT
+    dut: multiplicador
+    port map (
+        Clock => clk_in,
+        Reset => rst_in,
+        Start => start_in,
+        Va => va_in,
+        Vb => vb_in,
+        Vresult => result_out,
+        Ready => ready_out
+    );
+
+    -- Processo de geração de estímulos
     gerador_estimulos: process
         file tb_file : text open read_mode is "multiplicador_tb.dat";
         variable tb_line: line;
         variable space: character;
         variable VaRead, VbRead: bit_vector(3 downto 0);
         variable result_out_read: bit_vector(7 downto 0);
-        variable carry_esperado: bit;
     begin
         rst_in <= '1';
         start_in <= '0';
@@ -51,11 +64,11 @@ begin
             vb_in <= VbRead; 
             wait for 10 ns;
 
-            assert result_out /= result_out_read
-                report "Multiplicacaoo " & integer'image(to_integer(unsigned(VaRead))) & " * " & integer'image(to_integer(unsigned(VbRead))) severity error;
+            assert result_out = result_out_read
+                report "Multiplicacao " & integer'image(to_integer(unsigned(VaRead))) & " * " & integer'image(to_integer(unsigned(VbRead))) & " falhou: Esperado " & integer'image(to_integer(unsigned(result_out_read))) & ", obtido " & integer'image(to_integer(unsigned(result_out))) severity error;
         end loop;
 
-        assert false report "Teste concluido." severity note;	  
+        assert false report "Teste concluído." severity note;	  
         wait;  -- pára a execução do simulador
     end process;
 
