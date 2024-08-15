@@ -59,6 +59,7 @@ begin
         variable result_out_read: bit_vector(7 downto 0);
     begin
         rst_in <= '1';
+        start_in <= '0';
         wait for 10 ns;
         rst_in <= '0';
 
@@ -72,12 +73,7 @@ begin
         
             va_in <= VaRead;
             vb_in <= VbRead; 
-
-            start_in <= '1';
-            wait for 1 ns;
-            start_in <= '0';
-
-            wait until ready_out='1';
+            wait for 10 ns;
 
             -- Ativa o start para iniciar a multiplicação
             start_in <= '1';
