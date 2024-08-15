@@ -47,7 +47,7 @@ begin
   
   -- Conecta DUT (Device Under Test)
   dut: multiplicador
-       port map(Clock=>   clk_in,
+       port map (Clock=>   clk_in,
                 Reset=>   rst_in,
                 Start=>   start_in,
                 Va=>      va_in,
@@ -58,7 +58,7 @@ begin
 
   ---- Gera sinais de estimulo
   stimulus: process is
-  
+    
     type pattern_type is record
         -- Entradas
         op1: bit_vector(3 downto 0);
@@ -78,24 +78,39 @@ begin
   );
  
   begin
+      keep_simulating <= '1';
+      
       
 	  -- Para cada padrao de teste no vetor
       for i in patterns'range loop
          -- Injeta as entradas
          va_in <= patterns(i).op1;
-	 vb_in <= patterns(i).op2;
-         -- Aguarda que o modulo produza a saida
-         wait for 10 ns;
+		 vb_in <= patterns(i).op2;
+         
+         -- Reset inicial (1 periodo de clock) - não precisa repetir
+          rst_in <= '1'; start_in <= '0';
+          wait for clockPeriod;
+          rst_in <= '0';
+          wait until falling_edge(clk_in);
+          -- pulso do sinal de Start
+          start_in <= '1';
+          wait until falling_edge(clk_in);
+          start_in <= '0';
+          -- espera pelo termino da multiplicacao
+          wait until ready_out='1';
+         
          
          --  Verifica as saidas
          assert result_out = patterns(i).mult_esperada report "Erro na multiplicação " & integer'image(to_integer(unsigned(patterns(i).op1))) & " * " & integer'image(to_integer(unsigned(patterns(i).op2))) & " (Deu: " & integer'image(to_integer(unsigned(result_out))) & ") " & "Era pra ser: " & integer'image(to_integer(unsigned(patterns(i).mult_esperada)))  severity error;
+         
+      	wait for clockPeriod;
       end loop;
 
 	  -- Informa fim do teste
-	  assert false report "Teste concluido." severity note;	  
+	  assert false report "Teste concluido." severity note;	 
+      keep_simulating <= '0';
 	  wait;  -- pára a execução do simulador, caso contrário este process é reexecutado indefinidamente.
    end process;
 
 
 end architecture;
-
