@@ -10,3 +10,4 @@ outport : out bit_vector (3 downto 0 );
 done : out bit
 ) ;
 end entity ;
+
