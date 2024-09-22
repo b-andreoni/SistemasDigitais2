@@ -1,6 +1,7 @@
 library ieee;
 
 entity onescounter is
+	generic ( size: integer := 15);
 port (
   clock : in bit ;
   reset : in bit ;
