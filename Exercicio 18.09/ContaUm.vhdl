@@ -25,7 +25,7 @@ architecture uc_fd of onescounter is
     	outport : out bit_vector(3 downto 0);
         data0 : out bit;
         zero : out bit;
-    ); end component;
+    	); end component;
     
     component onescounter_uc is
     	port (
@@ -40,7 +40,7 @@ architecture uc_fd of onescounter is
         desloca : out bit;
         done : out bit;
         registra : out bit;
-    ); end component;
+    	); end component;
 	
     signal s_zera, s_conta, s_carrega, s_desloca, s_registra, s_data0, s_zero : bit;
 
