@@ -1,5 +1,4 @@
-library ieee;
-use ieee.numeric_bit.all;
+
 
 entity onescounter_fd is
     port (

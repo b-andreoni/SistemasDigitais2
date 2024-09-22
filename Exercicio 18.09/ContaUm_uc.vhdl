@@ -13,7 +13,7 @@ done : out bit;
 ) ;
 end entity;
 
-architecture fsm of onescounter_uci is
+architecture fsm of onescounter_uc is
     type estado_t is (S0, S1, S2, S3, S4, S5);
     signal PE, EA: estado_t;
 begin

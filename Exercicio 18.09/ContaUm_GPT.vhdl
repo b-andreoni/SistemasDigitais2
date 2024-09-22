@@ -42,6 +42,7 @@ architecture integration of onescounter is
             carrega : out bit;
             desloca : out bit;
             done    : out bit;
+            registra: out bit -- Adicionei 'registra' para controle de registro
         );
     end component;
 
@@ -79,4 +80,3 @@ begin
             registra => registra_sig
         );
 end architecture integration;
-
