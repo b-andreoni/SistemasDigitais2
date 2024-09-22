@@ -42,8 +42,7 @@ architecture estrutural of onescounter_fd is
     signal entrada_serial_signal : bit_vector(14 downto 0);
 
 begin
-    entrada_serial_signal <= '0';  -- Default value for illustration; modify as needed.
-
+    
     DESL: deslocador_n port map(
         clock => clock,
         reset => reset,
