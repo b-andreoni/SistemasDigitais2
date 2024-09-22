@@ -4,14 +4,14 @@ entity onescounter_fd is
     port (
         clock : in bit;
         reset : in bit;
-        inport : in bit;  -- Changed to a single bit
+        inport : in bit_vector(14 downto 0);
         zera : in bit;
         conta : in bit;
         carrega : in bit;
         desloca : in bit;
         registra : in bit;
         outport : out bit_vector(3 downto 0);
-        data0 : out bit;  -- Output port
+        data0 : out bit;
         zero : out bit
     );
 end entity;
@@ -32,18 +32,16 @@ architecture estrutural of onescounter_fd is
             reset: in bit; 
             carrega: in bit; 
             desloca: in bit; 
-            entrada_serial: in bit;  -- Changed to a single bit
-            dados: in bit;  -- Changed to a single bit
-            saida: out bit  -- Changed to a single bit
+            entrada_serial: in bit_vector(14 downto 0);
+            dados: in bit_vector(14 downto 0);
+            saida: out bit_vector(3 downto 0);
         );
     end component;
 
-    signal s_data : bit;  -- Changed to a single bit
-    signal entrada_serial_signal : bit;  -- Internal signal for entrada_serial
+    signal s_data : bit_vector(3 downto 0);
+    signal entrada_serial_signal : bit_vector(14 downto 0);
 
 begin
-    -- Connect entrada_serial_signal to a logic source
-    -- You can connect it to another internal signal or set it to a default value.
     entrada_serial_signal <= '0';  -- Default value for illustration; modify as needed.
 
     DESL: deslocador_n port map(
@@ -64,5 +62,5 @@ begin
         fim => zero
     );
 
-    data0 <= s_data;  -- Output the value of s_data
+    data0 <= entrada_serial_signal(0);
 end architecture;
