@@ -13,7 +13,7 @@ entity onescounter is
 end entity onescounter;
 
 architecture integration of onescounter is
-    -- Componentes
+    
     component onescounter_fd
         port (
             clock    : in bit;
@@ -42,7 +42,7 @@ architecture integration of onescounter is
             carrega : out bit;
             desloca : out bit;
             done    : out bit;
-            registra: out bit -- Adicionei 'registra' para controle de registro
+            registra: out bit
         );
     end component;
 
