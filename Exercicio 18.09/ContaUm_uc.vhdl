@@ -45,10 +45,38 @@ begin
                 PE <= S2;
                 done <= '0';
                 zera <= '1';
-                -- Continuação
+                carrega <= '1';
+                conta <= '0';
+                desloca <= '0';
                 registra <= '0';
             when S2 =>
-                -- Continuação
+                if data0 = '1' then
+                    PE <= S3;
+                else
+                    PE <= S4;
+                end if;
+            When S3 => 
+                PE <= S4;
+                done <= '0';
+                zera <= '0';
+                carrega <= '0';
+                conta <= '1';
+                desloca <= '0';
+                registra <= '0';
+            When S4 => 
+            if Zero = '1' then
+                PE <= S5;
+            else
+                PE <= S2;
+            end if;
+                done <= '0';
+                zera <= '0';
+                carrega <= '0';
+                conta <= '0';
+                desloca <= '1';
+                registra <= '0';  
+            when S5 =>
+                PE <= S0; 
         end case;
     end process combinatorioprocess;
 end architecture;
