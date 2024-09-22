@@ -12,8 +12,8 @@ entity contador4 is
 end entity contador4;
 
 architecture counter of contador4 is
-    signal Q0, Q1, Q2, Q3 : bit := '0';  -- Sinais para os bits do contador
-    signal clock_prev : bit := '0';      -- Sinal para armazenar o estado anterior do clock
+    signal Q0, Q1, Q2, Q3 : bit := '0';
+    signal clock_prev : bit := '0';
 begin
     process(clock, zera)
     begin
