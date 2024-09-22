@@ -1,19 +1,19 @@
 v 4
-file . "ContaUm_uc.vhdl" "d8417f63809a6aef1cf65de71d4d4d88fc6b8562" "20240922023836.853":
-  entity contaum_uc at 1( 0) + 0 on 205;
-  architecture fsm of contaum_uc at 21( 427) + 0 on 206;
-file . "Contador.vhdl" "784278dc53e7e45f92637014b8227ad3d4910421" "20240922023836.854":
-  entity contador4 at 1( 0) + 0 on 207;
-  architecture counter of contador4 at 14( 252) + 0 on 208;
-file . "Deslocador.vhdl" "e2e2bd02f8e4d991e05b9f4d647a8b115e041be7" "20240922023836.861":
-  entity deslocador_n at 2( 2) + 0 on 215;
-  architecture behavior of deslocador_n at 18( 308) + 0 on 216;
-file . "Contador_tb.vhdl" "b05a17f7311fd4c6773ab6b37ba894986a58f9e6" "20240922023836.856":
-  entity contador_tb at 1( 0) + 0 on 209;
-  architecture sim of contador_tb at 8( 126) + 0 on 210;
-file . "ContaUm_fd.vhdl" "ac0e24e95f05d46ed3b6b80ca38130207daae9a2" "20240922023836.859":
-  entity contaum_fd at 1( 0) + 0 on 211;
-  architecture estrutural of contaum_fd at 21( 453) + 0 on 212;
-file . "ContaUm.vhdl" "9ede79b0787b2f57a5775747a4680dbdac0ff11e" "20240922023836.860":
-  entity contaum at 1( 0) + 0 on 213;
-  architecture integration of contaum at 15( 302) + 0 on 214;
+file . "ContaUm.vhdl" "a42683083874e95ee82fbe2dc3d48deb0d8d8666" "20240922024249.467":
+  entity contaum at 1( 0) + 0 on 225;
+  architecture integration of contaum at 15( 288) + 0 on 226;
+file . "ContaUm_fd.vhdl" "39e948131336db49f556d943081e2e716a9c24e3" "20240922024249.460":
+  entity contaum_fd at 1( 0) + 0 on 223;
+  architecture estrutural of contaum_fd at 21( 433) + 0 on 224;
+file . "Contador_tb.vhdl" "b05a17f7311fd4c6773ab6b37ba894986a58f9e6" "20240922024249.447":
+  entity contador_tb at 1( 0) + 0 on 221;
+  architecture sim of contador_tb at 8( 126) + 0 on 222;
+file . "Deslocador.vhdl" "e2e2bd02f8e4d991e05b9f4d647a8b115e041be7" "20240922024249.468":
+  entity deslocador_n at 2( 2) + 0 on 227;
+  architecture behavior of deslocador_n at 18( 308) + 0 on 228;
+file . "Contador.vhdl" "784278dc53e7e45f92637014b8227ad3d4910421" "20240922024249.444":
+  entity contador4 at 1( 0) + 0 on 219;
+  architecture counter of contador4 at 14( 252) + 0 on 220;
+file . "ContaUm_uc.vhdl" "d8417f63809a6aef1cf65de71d4d4d88fc6b8562" "20240922024249.443":
+  entity contaum_uc at 1( 0) + 0 on 217;
+  architecture fsm of contaum_uc at 21( 427) + 0 on 218;
