@@ -59,7 +59,10 @@ begin
         registra => s_registra
     );
     
-    fd: onescounter_fd port map (
+    fd: onescounter_fd 
+    	generic map (N=>N)
+    
+      port map (
     	clock => clock,
         reset => reset,
         inport => inport,
@@ -73,5 +76,3 @@ begin
         zero => s_zero
     );
 end architecture; 
-
-
