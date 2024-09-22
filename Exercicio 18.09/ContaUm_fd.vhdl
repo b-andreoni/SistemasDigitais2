@@ -60,6 +60,6 @@ begin
         Q => outport,
         fim => zero
     );
-
+    zero <= zera;
     data0 <= entrada_serial_signal(0);
 end architecture;
