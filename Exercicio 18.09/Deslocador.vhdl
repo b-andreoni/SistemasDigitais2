@@ -1,3 +1,6 @@
+
+library ieee;
+use ieee.numeric_bit.all;
 library ieee;
 
 entity deslocador_n is

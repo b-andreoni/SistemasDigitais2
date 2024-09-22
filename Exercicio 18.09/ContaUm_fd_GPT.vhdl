@@ -1,17 +1,17 @@
-
-
+library ieee;
+use ieee.numeric_bit.all;
 entity onescounter_fd is
     port (
         clock : in bit;
         reset : in bit;
-        inport : in bit_vector(14 downto 0);
+        inport : in bit;  -- Changed to a single bit
         zera : in bit;
         conta : in bit;
         carrega : in bit;
         desloca : in bit;
         registra : in bit;
         outport : out bit_vector(3 downto 0);
-        data0 : out bit;
+        data0 : out bit;  -- Output port
         zero : out bit
     );
 end entity;
@@ -32,18 +32,26 @@ architecture estrutural of onescounter_fd is
             reset: in bit; 
             carrega: in bit; 
             desloca: in bit; 
-            entrada_serial: in bit; 
-            dados: in bit_vector(14 downto 0); 
-            saida: out bit_vector(14 downto 0) );
+            entrada_serial: in bit;  -- Changed to a single bit
+            dados: in bit;  -- Changed to a single bit
+            saida: out bit  -- Changed to a single bit
+        );
     end component;
 
-    signal s_data : bit_vector(14 downto 0);
+    signal s_data : bit;  -- Changed to a single bit
+    signal entrada_serial_signal : bit;  -- Internal signal for entrada_serial
+
 begin
+    -- Connect entrada_serial_signal to a logic source
+    -- You can connect it to another internal signal or set it to a default value.
+    entrada_serial_signal <= '0';  -- Default value for illustration; modify as needed.
+
     DESL: deslocador_n port map(
         clock => clock,
         reset => reset,
         carrega => carrega,
         desloca => desloca,
+        entrada_serial => entrada_serial_signal,
         dados => inport,
         saida => s_data
     );
@@ -56,5 +64,5 @@ begin
         fim => zero
     );
 
-    data0 <= s_data(0); 
+    data0 <= s_data;  -- Output the value of s_data
 end architecture;
