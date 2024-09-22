@@ -1,9 +1,9 @@
--------------------------------------------------------
---! @file mux4_2to1.vhd
---! @brief 2-to-1 4-bit multiplexer
---! @author Edson S. Gomi (gomi@usp.br)
---! @date 2020-05-17
--------------------------------------------------------
+                                                                                                                                                                     
+      ! @file mux4_2to1.vhd
+      ! @brief 2   to   1 4   bit multiplexer
+      ! @author Edson S. Gomi (gomi@usp.br)
+      ! @date 2020   05   17
+                                                                                                                                                                     
 
 entity mux4_2to1 is
   port (

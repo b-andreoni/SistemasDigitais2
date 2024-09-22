@@ -3,7 +3,7 @@ end testbench;
 
 architecture adder4bits_tb_arch of testbench is
 
-   -- Declara o componente do DUT
+          Declara o componente do DUT
    component adder4bits is
       port (
          a:         in  bit_vector(3 downto 0);
@@ -24,46 +24,46 @@ begin
    begin
       a_in <= "0000";
 	  b_in <= "0000";
-	  wait for 1 ns;  -- espera estabilizar e verifica a saída
+	  wait for 1 ns;         espera estabilizar e verifica a saída
 	  assert (c_out & s_out = "00000") report "Fail 0+0" severity error;
 	  
 	  a_in <= "0001";
 	  b_in <= "0001";
-	  wait for 1 ns;  -- espera estabilizar e verifica a saída
+	  wait for 1 ns;         espera estabilizar e verifica a saída
 	  assert (c_out & s_out = "00010") report "Fail 1+1" severity error;
 
 	  a_in <= "1000";
 	  b_in <= "1000";
-	  wait for 1 ns;  -- espera estabilizar e verifica a saída
+	  wait for 1 ns;         espera estabilizar e verifica a saída
 	  assert (c_out & s_out = "10000") report "Fail 8+8" severity error;
 
 	  a_in <= "1111";
 	  b_in <= "0001";
-	  wait for 1 ns;  -- espera estabilizar e verifica a saída
+	  wait for 1 ns;         espera estabilizar e verifica a saída
 	  assert (c_out & s_out = "10000") report "Fail F+1" severity error;
 
 	  a_in <= "1110";
 	  b_in <= "0111";
-	  wait for 1 ns;  -- espera estabilizar e verifica a saída
+	  wait for 1 ns;         espera estabilizar e verifica a saída
 	  assert (c_out & s_out = "10101") report "Fail E+7" severity error;
 
 	  a_in <= "0111";
 	  b_in <= "0011";
-	  wait for 1 ns;  -- espera estabilizar e verifica a saída
+	  wait for 1 ns;         espera estabilizar e verifica a saída
 	  assert (c_out & s_out = "01010") report "Fail 7+3" severity error;
 
 	  a_in <= "1100";
 	  b_in <= "0101";
-	  wait for 1 ns;  -- espera estabilizar e verifica a saída
+	  wait for 1 ns;         espera estabilizar e verifica a saída
 	  assert (c_out & s_out = "10001") report "Fail C+5" severity error;
 
-	  -- Limpa entradas (opcional)
+	         Limpa entradas (opcional)
 	  a_in <= "0000";
 	  b_in <= "0000";
 	  
-	  -- Informa fim do teste
+	         Informa fim do teste
 	  assert false report "Test done." severity note;	  
-	  wait;  -- pára a execução do simulador, caso contrário este process é reexecutado indefinidamente.
+	  wait;         pára a execução do simulador, caso contrário este process é reexecutado indefinidamente.
    end process;
    
 

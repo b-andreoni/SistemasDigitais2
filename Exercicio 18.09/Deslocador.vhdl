@@ -26,7 +26,7 @@ begin
             if carrega = '1' then
                 reg <= dados;
             elsif desloca = '1' then
-                reg(14 downto 1) <= reg(13 downto 0); -- Desloca para a direita
+                reg(14 downto 1) <= reg(13 downto 0);       
                 reg(0) <= '0'; 
             end if;
         end if;

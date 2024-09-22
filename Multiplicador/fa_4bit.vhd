@@ -1,29 +1,29 @@
--------------------------------------------------------
---! @file fa_4bit.vhd
---! @brief 4-bit full adder
---! @author Edson S. Gomi (gomi@usp.br)
---! @date 2020-03-21
--------------------------------------------------------
+                                                                                                                                                                     
+      ! @file fa_4bit.vhd
+      ! @brief 4   bit full adder
+      ! @author Edson S. Gomi (gomi@usp.br)
+      ! @date 2020   03   21
+                                                                                                                                                                     
  
 entity fa_4bit is
   port (
-    A,B : in bit_vector(3 downto 0);    -- adends
-    CIN : in bit;                       -- carry-in
-    SUM : out bit_vector(3 downto 0);   -- sum
-    COUT : out bit                      -- carry-out
+    A,B : in bit_vector(3 downto 0);           adends
+    CIN : in bit;                              carry   in
+    SUM : out bit_vector(3 downto 0);          sum
+    COUT : out bit                             carry   out
     );
 end entity fa_4bit;
 
 architecture ripple of fa_4bit is
--- Ripple adder solution
+       Ripple adder solution
 
-  --  Declaration of the 1 bit adder.  
+          Declaration of the 1 bit adder.  
   component fa_1bit
     port (
-      A,B : in bit;       -- adends
-      CIN : in bit;       -- carry-in
-      SUM : out bit;      -- sum
-      COUT : out bit      -- carry-out
+      A,B : in bit;              adends
+      CIN : in bit;              carry   in
+      SUM : out bit;             sum
+      COUT : out bit             carry   out
     );
   end component fa_1bit;
 
@@ -40,7 +40,7 @@ architecture ripple of fa_4bit is
   
 begin
   
-  -- Components instantiation
+         Components instantiation
   ADDER0: entity work.fa_1bit(wakerly) port map (
     A => x(0),
     B => y(0),

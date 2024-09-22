@@ -1,11 +1,11 @@
--------------------------------------------------------
---! @file fa_8bit.vhd
---! @brief 8-bit full adder
---! @author Edson Midorikawa (emidorik@usp.br)
---! @date 2020-06-15
--------------------------------------------------------
--- baseado em fa_4bit.vhd (gomi@usp.br)
--------------------------------------------------------
+                                                                                                                                                                     
+      ! @file fa_8bit.vhd
+      ! @brief 8   bit full adder
+      ! @author Edson Midorikawa (emidorik@usp.br)
+      ! @date 2020   06   15
+                                                                                                                                                                     
+       baseado em fa_4bit.vhd (gomi@usp.br)
+                                                                                                                                                                     
  
 entity fa_8bit is
   port (
@@ -17,15 +17,15 @@ entity fa_8bit is
 end entity;
 
 architecture ripple of fa_8bit is
--- Ripple adder solution
+       Ripple adder solution
 
-  --  Declaration of the 1-bit adder.  
+          Declaration of the 1   bit adder.  
   component fa_1bit
     port (
-      A, B : in  bit;   -- adends
-      CIN  : in  bit;   -- carry-in
-      SUM  : out bit;   -- sum
-      COUT : out bit    -- carry-out
+      A, B : in  bit;          adends
+      CIN  : in  bit;          carry   in
+      SUM  : out bit;          sum
+      COUT : out bit           carry   out
     );
   end component fa_1bit;
 
@@ -43,7 +43,7 @@ architecture ripple of fa_8bit is
   
 begin
   
-  -- Components instantiation
+         Components instantiation
   ADDER0: entity work.fa_1bit(wakerly) port map (
     A => x(0),
     B => y(0),

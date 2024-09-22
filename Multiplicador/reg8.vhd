@@ -1,12 +1,12 @@
--------------------------------------------------------
---! @file reg8.vhd
---! @brief 8-bit register with asynchronous reset
---! @author Edson Midorikawa (emidorik@usp.br)
---! @date 2020-06-15
--------------------------------------------------------
+                                                                                                                                                                     
+      ! @file reg8.vhd
+      ! @brief 8   bit register with asynchronous reset
+      ! @author Edson Midorikawa (emidorik@usp.br)
+      ! @date 2020   06   15
+                                                                                                                                                                     
 
 library ieee;
---use ieee.numeric_bit.rising_edge;
+      use ieee.numeric_bit.rising_edge;
 
 entity reg8 is
   port (
@@ -23,7 +23,7 @@ begin
   begin
     if reset = '1' then
       dado <= (others=>'0');
---    elsif (rising_edge(clock)) then
+          elsif (rising_edge(clock)) then
     elsif (clock'event and clock='1') then
       if enable='1' then
         dado <= D;

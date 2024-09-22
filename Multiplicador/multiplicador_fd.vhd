@@ -1,11 +1,11 @@
--------------------------------------------------------
---! @file multiplicador.vhd
---! @brief synchronous multiplier
---! @author Edson Midorikawa (emidorik@usp.br)
---! @date 2020-06-15
--------------------------------------------------------
---library ieee;
---use ieee.numeric_bit.rising_edge;
+                                                                                                                                                                     
+      ! @file multiplicador.vhd
+      ! @brief synchronous multiplier
+      ! @author Edson Midorikawa (emidorik@usp.br)
+      ! @date 2020   06   15
+                                                                                                                                                                     
+      library ieee;
+      use ieee.numeric_bit.rising_edge;
 
 entity multiplicador_fd is
   port (
@@ -112,7 +112,7 @@ begin
 
   SUB1: fa_4bit port map (
         A=>   s_rb,
-        B=>   "1111",  -- (-1)
+        B=>   "1111",         (   1)
         CIN=> '0',
         SUM=> s_bmenos1,
         COUT=> open

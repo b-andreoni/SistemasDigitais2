@@ -1,9 +1,9 @@
--------------------------------------------------------
---! @file zero_detector.vhd
---! @brief zero value detector
---! @author Edson Midorikawa (emidorik@usp.br)
---! @date 2020-06-15
--------------------------------------------------------
+                                                                                                                                                                     
+      ! @file zero_detector.vhd
+      ! @brief zero value detector
+      ! @author Edson Midorikawa (emidorik@usp.br)
+      ! @date 2020   06   15
+                                                                                                                                                                     
  
 entity zero_detector is
   port (
@@ -13,7 +13,7 @@ entity zero_detector is
 end entity;
 
 architecture dataflow of zero_detector is
--- solution using a NOR gate
+       solution using a NOR gate
 begin
 
   ZERO <= not(A(0) or A(1) or A(2) or A(3));
@@ -21,7 +21,7 @@ begin
 end architecture;
 
 architecture when_else_arch of zero_detector is
--- solution using when else command
+       solution using when else command
 begin
 
   ZERO <= '1' when A = "0000" else
@@ -30,7 +30,7 @@ begin
 end architecture;
   
 architecture with_select_arch of zero_detector is
--- solution using with select command
+       solution using with select command
 begin
 
   with A select ZERO <=

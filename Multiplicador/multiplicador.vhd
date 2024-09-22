@@ -1,11 +1,11 @@
--------------------------------------------------------
---! @file multiplicador.vhd
---! @brief synchronous multiplier
---! @author Edson Midorikawa (emidorik@usp.br)
---! @date 2020-06-15
--------------------------------------------------------
+                                                                                                                                                                     
+      ! @file multiplicador.vhd
+      ! @brief synchronous multiplier
+      ! @author Edson Midorikawa (emidorik@usp.br)
+      ! @date 2020   06   15
+                                                                                                                                                                     
 library ieee;
---use ieee.numeric_bit.rising_edge;
+      use ieee.numeric_bit.rising_edge;
 
 entity multiplicador is
   port (
@@ -74,7 +74,7 @@ begin
       ready=> Ready
     );
 
-  -- FD usa sinal invertido
+         FD usa sinal invertido
   MULT_FD: multiplicador_fd port map (
       clock=>    s_clock_n,
       Va=>       Va,

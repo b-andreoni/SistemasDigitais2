@@ -7,7 +7,7 @@ end multiplicador_tb_arquivo;
 
 architecture Multiplicador_Read of multiplicador_tb_arquivo is
 
-    -- Declara o componente do DUT
+           Declara o componente do DUT
     component multiplicador 
         port (
             Clock:    in  bit;
@@ -19,7 +19,7 @@ architecture Multiplicador_Read of multiplicador_tb_arquivo is
         );
     end component;
 
-    -- Sinais de teste
+           Sinais de teste
     signal clk_in: bit := '0';
     signal rst_in, start_in, ready_out: bit := '0';
     signal va_in, vb_in: bit_vector(3 downto 0);
@@ -27,7 +27,7 @@ architecture Multiplicador_Read of multiplicador_tb_arquivo is
 
 begin
 
-    -- Instância do DUT
+           Instância do DUT
     dut: multiplicador
     port map (
         Clock => clk_in,
@@ -39,7 +39,7 @@ begin
         Ready => ready_out
     );
 
-    -- Geração do clock
+           Geração do clock
     clk_gen: process
     begin
         while true loop
@@ -50,7 +50,7 @@ begin
         end loop;
     end process clk_gen;
 
-    -- Processo de geração de estímulos
+           Processo de geração de estímulos
     gerador_estimulos: process
         file tb_file : text open read_mode is "multiplicador_tb.dat";
         variable tb_line: line;
@@ -75,12 +75,12 @@ begin
             vb_in <= VbRead; 
             wait for 10 ns;
 
-            -- Ativa o start para iniciar a multiplicação
+                   Ativa o start para iniciar a multiplicação
             start_in <= '1';
             wait for 10 ns;
             start_in <= '0';
 
-            -- Espera até que o sinal Ready esteja ativo
+                   Espera até que o sinal Ready esteja ativo
             wait until ready_out = '1';
 
             assert result_out = result_out_read
@@ -88,7 +88,7 @@ begin
         end loop;
 
         assert false report "Teste concluído." severity note;	  
-        wait;  -- pára a execução do simulador
+        wait;         pára a execução do simulador
     end process;
 
 end Multiplicador_Read;

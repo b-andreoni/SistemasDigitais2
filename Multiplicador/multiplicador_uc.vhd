@@ -1,11 +1,11 @@
--------------------------------------------------------
---! @file multiplicador_uc.vhd
---! @brief control unit of the synchronous multiplier
---! @author Edson Midorikawa (emidorik@usp.br)
---! @date 2020-06-15
--------------------------------------------------------
+                                                                                                                                                                     
+      ! @file multiplicador_uc.vhd
+      ! @brief control unit of the synchronous multiplier
+      ! @author Edson Midorikawa (emidorik@usp.br)
+      ! @date 2020   06   15
+                                                                                                                                                                     
 library ieee;
---use ieee.numeric_bit.rising_edge;
+      use ieee.numeric_bit.rising_edge;
 
 entity multiplicador_uc is
   port (
@@ -29,13 +29,13 @@ begin
   begin
     if reset='1' then
       current_state <= wait0;
---    elsif (rising_edge(clock)) then
+          elsif (rising_edge(clock)) then
     elsif (clock'event and clock='1') then
       current_state <= next_state;
     end if;
   end process;
 
-  -- Logica de proximo estado
+         Logica de proximo estado
   next_state <=
     wait0 when (current_state = wait0) and (start = '0') else
     x1    when (current_state = wait0) and (start = '1') else
@@ -46,7 +46,7 @@ begin
     wait0 when (current_state = fins) else
     wait0;
 	  
-  -- Decodifica o estado para gerar sinais de controle
+         Decodifica o estado para gerar sinais de controle
   CEa  <= '1' when current_state=x1 else '0';
   RSTa <= '1' when current_state=wait0 else '0';
   CEb  <= '1' when current_state=x1 or current_state=x2 else '0';
@@ -55,7 +55,7 @@ begin
   RSTr <= '1' when current_state=x1 else '0';
   DCb  <= '1' when current_state=x2 else '0';
 
-  -- Decodifica o estado para gerar as saídas da UC
+         Decodifica o estado para gerar as saídas da UC
   Ready <= '1' when current_state=fins else '0';
 
 end architecture;

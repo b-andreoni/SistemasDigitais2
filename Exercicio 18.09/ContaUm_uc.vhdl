@@ -1,22 +1,24 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 
-entity onescounter_uc is
+entity ContaUm_uc is
     port (
-        clock : in bit;
-        reset : in bit;
-        start : in bit;
-        data0 : in bit;
-        zero : in bit;
-        zera : out bit;
-        conta : out bit;
-        carrega : out bit;
-        desloca : out bit;
-        done : out bit
+        clock    : in bit;
+        reset    : in bit;
+        start    : in bit;
+        data0    : in bit;
+        zero     : in bit;
+        zera     : out bit;
+        conta    : out bit;
+        carrega  : out bit;
+        desloca  : out bit;
+        done     : out bit;
+        registra  : out bit       
     );
 end entity;
 
-architecture fsm of onescounter_uc is
+
+architecture fsm of ContaUm_uc is
     type estado_t is (S0, S1, S2, S3, S4, S5);
     signal PE, EA: estado_t;
 begin
