@@ -25,7 +25,8 @@ architecture beh of testbench is
     -- Depois, complete no espaço para que o DUT seja instanciado
 
 begin
-    clk <= not clk and run after 10 ns;
+    clk <= (not clk) and run after 10 ns;
+
     DUT: logx
     port map (
         Clock => clk_in,
