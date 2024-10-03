@@ -43,12 +43,11 @@ begin
         inicio <= '1';  
         wait for 10 ns ;  
         inicio <= '0';
-        wait until fim = '1';
         
-        Assert R = 01001010
-            Report "Teste 1 - incorreto" severity error;
-        Assert false report "Teste concluido" severity note;
+        assert R = 01001010 report "Teste 1 - Incorreto" severity error;
+        assert false report "Teste Concluido" severity note;
 
+        wait until fim = '1';
         run <= '0';
         wait;
     end process;
