@@ -1,3 +1,5 @@
+library ieee;
+use ieee.numeric_bit.all;
 
 entity testbench is
 end testbench;
