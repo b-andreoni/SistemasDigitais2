@@ -16,7 +16,7 @@ architecture beh of testbench is
     );
    end component;
 
-   Signal clk : bit
+   Signal clk, run, Keep := '0': bit
    signal clk_in, inicio_in : bit;
    signal x_in: bit_vector(7 downto 0);
    signal R_in: bit_vector(7 downto 0);
@@ -25,8 +25,7 @@ architecture beh of testbench is
     -- Depois, complete no espaço para que o DUT seja instanciado
 
 begin
-    clk <= (not clk) and (not run) after 10 ns;
-
+    clk <= not clk and run after 10 ns;
     DUT: multiplicador
     port map (
         Clock => clk_in,
@@ -38,8 +37,7 @@ begin
 
     process
     begin
-        run <= '1'; -- não sei onde aplicar esses módulos de run
-
+        run <= '1'; 
         x <= "11110000"; -- indicando a entrada do circuito log
         inicio <= '1';  
         wait for 10 ns ;  
@@ -49,7 +47,7 @@ begin
         Assert R = 01001010
             Report "Teste 1 - incorreto" severity error;
         Assert false report "Teste concluido" severity note;
-        
+
         run <= '0';
         wait;
     end process;
