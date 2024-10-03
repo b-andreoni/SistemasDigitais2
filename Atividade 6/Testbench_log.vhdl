@@ -25,7 +25,7 @@ architecture beh of testbench is
     -- Depois, complete no espaço para que o DUT seja instanciado
 
 begin
-    clk <= not clk and keep after 10 ns;
+    clk <= (not clk) and (not run) after 10 ns;
 
     DUT: multiplicador
     port map (
