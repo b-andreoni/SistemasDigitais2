@@ -26,7 +26,7 @@ architecture beh of testbench is
 
 begin
     clk <= not clk and run after 10 ns;
-    DUT: multiplicador
+    DUT: logx
     port map (
         Clock => clk_in,
         inicio => inicio_in,
